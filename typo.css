@@ -1,351 +1,412 @@
-@charset "utf-8";
-
-/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
-html {
-  color: #333;
-  background: #fff;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-rendering: optimizelegibility;
+.markdown-body {
+    font-family: PingFang SC,Hiragino Sans GB,Helvetica Neue,Microsoft Yahei,WenQuanYi Micro Hei,sans-serif;;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
 }
 
-/* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
-html.borderbox *, html.borderbox *:before, html.borderbox *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+.markdown-body::before {
+    display: table;
+    content: "";
 }
 
-/* 内外边距通常让各个浏览器样式的表现位置不同 */
-body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
-  margin: 0;
-  padding: 0;
+.markdown-body::after {
+    display: table;
+    clear: both;
+    content: "";
 }
 
-/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
-article, aside, details, figcaption, figure, footer, header, menu, nav, section {
-  display: block;
+.markdown-body>*:first-child {
+    margin-top: 0 !important;
 }
 
-/* HTML5 媒体文件跟 img 保持一致 */
-audio, canvas, video {
-  display: inline-block;
+.markdown-body>*:last-child {
+    margin-bottom: 0 !important;
 }
 
-/* 要注意表单元素并不继承父级 font 的问题 */
-body, button, input, select, textarea {
-  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+.markdown-body a:not([href]) {
+    color: inherit;
+    text-decoration: none;
 }
 
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  padding: 0;
-  border: 0;
+.markdown-body .absent {
+    color: #cb2431;
 }
 
-/* 去掉各Table cell 的边距并让其边重合 */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+.markdown-body .anchor {
+    float: left;
+    padding-right: 4px;
+    margin-left: -20px;
+    line-height: 1;
 }
 
-/* 去除默认边框 */
-fieldset, img {
-  border: 0;
+.markdown-body .anchor:focus {
+    outline: none;
 }
 
-/* 块/段落引用 */
-blockquote {
-  position: relative;
-  color: #999;
-  font-weight: 400;
-  border-left: 1px solid #1abc9c;
-  padding-left: 1em;
-  margin: 1em 3em 1em 2em;
+.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    border-spacing: 0;
 }
 
-@media only screen and ( max-width: 640px ) {
-  blockquote {
-    margin: 1em 0;
-  }
+.markdown-body hr {
+    padding: 0;
+    margin: 24px 0;
+    border: 1px dashed #D2DAE2;
 }
 
-/* Firefox 以外，元素没有下划线，需添加 */
-acronym, abbr {
-  border-bottom: 1px dotted;
-  font-variant: normal;
+.markdown-body blockquote {
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+    margin: 10px;
 }
 
-/* 添加鼠标问号，进一步确保应用的语义是正确的（要知道，交互他们也有洁癖，如果你不去掉，那得多花点口舌） */
-abbr {
-  cursor: help;
+.markdown-body blockquote>:first-child {
+    margin-top: 0;
 }
 
-/* 一致的 del 样式 */
-del {
-  text-decoration: line-through;
+.markdown-body blockquote>:last-child {
+    margin-bottom: 0;
 }
 
-address, caption, cite, code, dfn, em, th, var {
-  font-style: normal;
-  font-weight: 400;
+.markdown-body kbd {
+    display: inline-block;
+    padding: 3px 5px;
+    font-size: 11px;
+    line-height: 10px;
+    color: #444d56;
+    vertical-align: middle;
+    background-color: #fafbfc;
+    border: solid 1px #c6cbd1;
+    border-bottom-color: #959da5;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 #959da5;
 }
 
-/* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
-ul, ol {
-  list-style: none;
+.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
 }
 
-/* 对齐是排版最重要的因素, 别让什么都居中 */
-caption, th {
-  text-align: left;
+.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link {
+    color: #1b1f23;
+    vertical-align: middle;
+    visibility: hidden;
 }
 
-q:before, q:after {
-  content: '';
+.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor {
+    text-decoration: none;
 }
 
-/* 统一上标和下标 */
-sub, sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
+.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link {
+    visibility: visible;
 }
 
-:root sub, :root sup {
-  vertical-align: baseline; /* for ie9 and other modern browsers */
+.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code {
+    font-size: inherit;
 }
 
-sup {
-  top: -0.5em;
+.markdown-body h1 {
+    padding-bottom: 0.3em;
+    font-size: 2em;
+    border-bottom: 1px solid #eaecef;
 }
 
-sub {
-  bottom: -0.25em;
+.markdown-body h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eaecef;
 }
 
-/* 让链接在 hover 状态下显示下划线 */
-a {
-  color: #1abc9c;
+.markdown-body h3 {
+    font-size: 1.25em;
 }
 
-a:hover {
-  text-decoration: underline;
+.markdown-body h4 {
+    font-size: 1em;
 }
 
-.typo a {
-  border-bottom: 1px solid #1abc9c;
+.markdown-body h5 {
+    font-size: 0.875em;
 }
 
-.typo a:hover {
-  border-bottom-color: #555;
-  color: #555;
-  text-decoration: none;
+.markdown-body h6 {
+    font-size: 0.85em;
+    color: #6a737d;
 }
 
-/* 默认不显示下划线，保持页面简洁 */
-ins, a {
-  text-decoration: none;
+.markdown-body ul,.markdown-body ol {
+    padding-left: 2em;
 }
 
-/* 专名号：虽然 u 已经重回 html5 Draft，但在所有浏览器中都是可以使用的，
- * 要做到更好，向后兼容的话，添加 class="typo-u" 来显示专名号
- * 关于 <u> 标签：http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-u-element
- * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
- * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/
- */
-u, .typo-u {
-  text-decoration: underline;
+.markdown-body ul.no-list,.markdown-body ol.no-list {
+    padding: 0;
+    list-style-type: none;
 }
 
-/* 标记，类似于手写的荧光笔的作用 */
-mark {
-  background: #fffdd1;
-  border-bottom: 1px solid #ffedce;
-  padding: 2px;
-  margin: 0 5px;
+.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-/* 代码片断 */
-pre, code, pre tt {
-  font-family: Monaco, Andale Mono, Courier New, monospace;
-	display: block;
-	overflow-x: auto;
-	padding: 0.5em;
-	background: #3f3f3f;
-	color: #dcdcdc;
+.markdown-body li>p {
+    margin-top: 16px;
 }
 
-pre {
-  background: #f8f8f8;
-  border: 1px solid #ddd;
-  display: block;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  -webkit-overflow-scrolling: touch;
+.markdown-body li+li {
+    margin-top: 0.25em;
 }
 
-/* 一致化 horizontal rule */
-hr {
-  border: none;
-  border-bottom: 1px solid #cfcfcf;
-  margin-bottom: 0.8em;
-  height: 10px;
+.markdown-body dl {
+    padding: 0;
 }
 
-/* 底部印刷体、版本等标记 */
-small, .typo-small,
-  /* 图片说明 */
-figcaption {
-  font-size: 0.9em;
-  color: #888;
+.markdown-body dl dt {
+    padding: 0;
+    margin-top: 16px;
+    font-size: 1em;
+    font-style: italic;
+    font-weight: 600;
 }
 
-strong, b {
-  font-weight: bold;
-  color: #000;
+.markdown-body dl dd {
+    padding: 0 16px;
+    margin-bottom: 16px;
 }
 
-/* 可拖动文件添加拖动手势 */
-[draggable] {
-  cursor: move;
+.markdown-body table {
+    display: block;
+    width: 100%;
+    overflow: auto;
 }
 
-.clearfix:before, .clearfix:after {
-  content: "";
-  display: table;
+.markdown-body table th {
+    font-weight: 600;
 }
 
-.clearfix:after {
-  clear: both;
+.markdown-body table th,.markdown-body table td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
 }
 
-.clearfix {
-  zoom: 1;
+.markdown-body table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
 }
 
-/* 强制文本换行 */
-.textwrap, .textwrap td, .textwrap th {
-  word-wrap: break-word;
-  word-break: break-all;
+.markdown-body table tr:nth-child(2n) {
+    background-color: #f6f8fa;
 }
 
-.textwrap-table {
-  table-layout: fixed;
+.markdown-body table img {
+    background-color: transparent;
 }
 
-/* 提供 serif 版本的字体设置: iOS 下中文自动 fallback 到 sans-serif */
-.serif {
-  font-family: Palatino, Optima, Georgia, serif;
+.markdown-body img {
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
 }
 
-/* 保证块/段落之间的空白隔行 */
-.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
-.typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table, blockquote {
-  margin-bottom: 1.2em
+.markdown-body img[align=right] {
+    padding-left: 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-  font-weight: 100;
-  color: #000;
-  line-height: 1.35;
+.markdown-body img[align=left] {
+    padding-right: 20px;
 }
 
-/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
-.typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6,
-.typo-h1, .typo-h2, .typo-h3, .typo-h4, .typo-h5, .typo-h6 {
-  margin-top: 1.2em;
-  margin-bottom: 0.6em;
-  line-height: 1.35;
+.markdown-body .emoji {
+    max-width: none;
+    vertical-align: text-top;
+    background-color: transparent;
 }
 
-.typo h1, .typo-h1 {
-  font-size: 2em;
+.markdown-body span.frame {
+    display: block;
+    overflow: hidden;
 }
 
-.typo h2, .typo-h2 {
-  font-size: 1.8em;
+.markdown-body span.frame>span {
+    display: block;
+    float: left;
+    width: auto;
+    padding: 7px;
+    margin: 13px 0 0;
+    overflow: hidden;
+    border: 1px solid #dfe2e5;
 }
 
-.typo h3, .typo-h3 {
-  font-size: 1.6em;
+.markdown-body span.frame span img {
+    display: block;
+    float: left;
 }
 
-.typo h4, .typo-h4 {
-  font-size: 1.4em;
+.markdown-body span.frame span span {
+    display: block;
+    padding: 5px 0 0;
+    clear: both;
+    color: #24292e;
 }
 
-.typo h5, .typo h6, .typo-h5, .typo-h6 {
-  font-size: 1.2em;
+.markdown-body span.align-center {
+    display: block;
+    overflow: hidden;
+    clear: both;
 }
 
-/* 在文章中，应该还原 ul 和 ol 的样式 */
-.typo ul, .typo-ul {
-  margin-left: 1.3em;
-  list-style: disc;
+.markdown-body span.align-center>span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: center;
 }
 
-.typo ol, .typo-ol {
-  list-style: decimal;
-  margin-left: 1.9em;
+.markdown-body span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
 }
 
-.typo li ul, .typo li ol, .typo-ul ul, .typo-ul ol, .typo-ol ul, .typo-ol ol {
-  margin-bottom: 0.8em;
-  margin-left: 2em;
+.markdown-body span.align-right {
+    display: block;
+    overflow: hidden;
+    clear: both;
 }
 
-.typo li ul, .typo-ul ul, .typo-ol ul {
-  list-style: circle;
+.markdown-body span.align-right>span {
+    display: block;
+    margin: 13px 0 0;
+    overflow: hidden;
+    text-align: right;
 }
 
-/* 同 ul/ol，在文章中应用 table 基本格式 */
-.typo table th, .typo table td, .typo-table th, .typo-table td, .typo table caption {
-  border: 1px solid #ddd;
-  padding: 0.5em 1em;
-  color: #666;
+.markdown-body span.align-right span img {
+    margin: 0;
+    text-align: right;
 }
 
-.typo table th, .typo-table th {
-  background: #fbfbfb;
+.markdown-body span.float-left {
+    display: block;
+    float: left;
+    margin-right: 13px;
+    overflow: hidden;
 }
 
-.typo table thead th, .typo-table thead th {
-  background: #f1f1f1;
+.markdown-body span.float-left span {
+    margin: 13px 0 0;
 }
 
-.typo table caption {
-  border-bottom: none;
+.markdown-body span.float-right {
+    display: block;
+    float: right;
+    margin-left: 13px;
+    overflow: hidden;
 }
 
-/* 去除 webkit 中 input 和 textarea 的默认样式  */
-.typo-input, .typo-textarea {
-  -webkit-appearance: none;
-  border-radius: 0;
+.markdown-body span.float-right>span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: right;
 }
 
-.typo-em, .typo em, legend, caption {
-  color: #000;
-  font-weight: inherit;
+.markdown-body code,.markdown-body tt {
+    padding: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 3px;
 }
 
-/* 着重号，只能在少量（少于100个字符）且全是全角字符的情况下使用 */
-.typo-em {
-  position: relative;
+.markdown-body code::before,.markdown-body code::after,.markdown-body tt::before,.markdown-body tt::after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
 }
 
-.typo-em:after {
-  position: absolute;
-  top: 0.65em;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+.markdown-body code br,.markdown-body tt br {
+    display: none;
 }
 
-/* Responsive images */
-.typo img {
-  max-width: 100%;
+.markdown-body del code {
+    text-decoration: inherit;
+}
+
+.markdown-body pre {
+    word-wrap: normal;
+}
+
+.markdown-body pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+}
+
+.markdown-body .highlight {
+    margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+    margin-bottom: 0;
+    word-break: normal;
+}
+
+.markdown-body .highlight pre,.markdown-body pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+}
+
+.markdown-body pre code,.markdown-body pre tt {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+}
+
+.markdown-body pre code::before,.markdown-body pre code::after,.markdown-body pre tt::before,.markdown-body pre tt::after {
+    content: normal;
+}
+
+.markdown-body .csv-data td,.markdown-body .csv-data th {
+    padding: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.markdown-body .csv-data .blob-num {
+    padding: 10px 8px 9px;
+    text-align: right;
+    background: #fff;
+    border: 0;
+}
+
+.markdown-body .csv-data tr {
+    border-top: 0;
+}
+
+.markdown-body .csv-data th {
+    font-weight: 600;
+    background: #f6f8fa;
+    border-top: 0;
 }
